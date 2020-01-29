@@ -5,6 +5,10 @@
   </script>
   <!-- the following CSS is used to set the size of the Map -->
   <style type="text/css"> #mapid { height: 180px; } </style>
+  <!-- the following links incorporate the CSS required for custom icon creation -->
+  <link rel="stylesheet" href="ionicons.min.css">
+  <link rel="stylesheet" href="leaflet.awesome-markers.css">
+  <script src="leaflet.awesome-markers.js"></script>
 </head>
 <body> <!-- the mapid div will hold the map -->
     <!-- div will create a section that holds the item -->
@@ -43,6 +47,8 @@
       //end code to add the leaflet map
       console.log(addBasicMarkers);
       function addBasicMarkers() {
+        // create custom icon
+        var testMarkerPink = L.AwesomeMarkers.icon({ icon: 'play', markerColor: 'pink' });
         // add a point
         L.marker([51.5, -0.09]).addTo(mymap) .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
         // create a geoJSON feature -
@@ -55,8 +61,9 @@
           "geometry": {
             "type": "Point",
             "coordinates": [-0.133481, 51.524611] } };
-            // and add it to the map
-            L.geoJSON(geojsonFeature).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+" "+geojsonFeature.properties.popupContent+"<b>");
+            // and add it to the map with icon
+            L.geoJSON(geojsonFeature, { pointToLayer: function (feature, latlng) { return L.marker(latlng, {icon:testMarkerPink}); } }).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+" "+geojsonFeature.properties.popupContent+"<b>");
+            // L.geoJSON(geojsonFeature).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+" "+geojsonFeature.properties.popupContent+"<b>");
         } // end code to add the basic markers
       console.log(addBasicMarkers);
       window.onload = loadLeafletMap;
