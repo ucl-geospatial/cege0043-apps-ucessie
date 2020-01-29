@@ -1,0 +1,19 @@
+[33mcommit 861ed1b6a7288b54c8b52f5de28f1ee728e486a2[m[33m ([m[1;36mHEAD -> [m[1;32mweek1[m[33m, [m[1;31morigin/week1[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Claire Ellul <c.ellul@ucl.ac.uk>
+Date:   Fri Dec 27 04:28:36 2019 +0000
+
+    Added a node express server with https security
+
+[33mcommit 27fbcaa7c76e77d070fbc09df04b3040bc11c012[m
+Author: Claire Ellul <c.ellul@ucl.ac.uk>
+Date:   Fri Dec 27 04:25:37 2019 +0000
+
+    Basic Node Express server
+    
+    Added a basic node express server
+
+[33mcommit ec0d3591b8c52f876a60487569149b6b3f11b282[m
+Author: Claire Ellul <c.ellul@ucl.ac.uk>
+Date:   Tue Dec 24 09:49:50 2019 +0000
+
+    Initial commit
