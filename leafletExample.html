@@ -92,8 +92,9 @@
       // here define the order of loading map
       // window.onload = loadLeafletMap;
       document.addEventListener('DOMContentLoaded', function() { loadMap(); }, false);
-      function loadMap() { loadLeafletMap(); getEarthquakeData(); } // basemap first than the earthquake data
+      function loadMap() { loadLeafletMap();} // basemap first than the earthquake data
 
-    </script>>
+    </script>
+    <button id="loadEarthquakeData" name="loadEarthquakeData" onclick="getEarthquakeData()">Click here to load the Earthquake data </button>
 </body>
 </html>
