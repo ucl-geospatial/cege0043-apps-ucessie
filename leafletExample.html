@@ -12,89 +12,22 @@
   <link rel="stylesheet" href="ionicons.min.css">
   <link rel="stylesheet" href="leaflet.awesome-markers.css">
   <script src="leaflet.awesome-markers.js"></script>
+  <script src="js/basicMap.js"></script>
+  <script src="js/earthquakes.js"></script>
 </head>
 <body> <!-- the mapid div will hold the map -->
     <!-- div will create a section that holds the item -->
     <div id="mapid" style="width: 600px; height: 400px;"></div>
-    <!-- the following script will load the map and set the default view and zoom, as well as loading the basemap tiles -->
-    <!--<script>
-      // load the map
-      var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-      // load the tiles
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', { maxZoom: 18, attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 'Imagery © <a href="http://mapbox.com">Mapbox</a>', id: 'mapbox.streets' }).addTo(mymap);
-      // add a point
-      L.marker([51.5, -0.09]).addTo(mymap) .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-      // add a circle
-      L.circle([51.508, -0.11], 500, { color: 'red', fillColor: '#f03', fillOpacity: 0.5 }).addTo(mymap).bindPopup("I am a circle.");
-      // add a polygon with 3 end points (i.e. a triangle)
-      var myPolygon = L.polygon([ [51.509, -0.08], [51.503, -0.06], [51.51, -0.047] ],{ color: 'red', fillColor: '#f03', fillOpacity: 0.5 }).addTo(mymap).bindPopup("I am a polygon.");
-    </script>-->
     <script>
-      // global variable to store the map
-      var mymap;
-      var popup = L.popup();
-      var earthquakeLayer;
-
-      // All function below
-      // a function to request earthquake data
-      function getEarthquakeData() {
-        var layerURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson";
-        // create custom icon
-        var testMarkerRed = L.AwesomeMarkers.icon({ icon: 'play', markerColor: 'red' });
-        var testMarkerPink = L.AwesomeMarkers.icon({ icon: 'play', markerColor: 'pink' });
-        $.ajax({url: layerURL, crossDomain: true,success: function(result){ console.log(result);
-          // check that the data is correct , a console log
-          // add the JSON layer onto the map - it will appear using the default icons
-          // magnitude is 1.75 or less = pink; larger than is red
-          earthquakelayer = L.geoJson(result, { pointToLayer: function (feature, latlng) {
-            if (feature.properties.mag > 1.75) { return L.marker(latlng, {icon:testMarkerRed}).bindPopup("<b>"+feature.properties.place +"</b>"); }
-            else { return L.marker(latlng, {icon:testMarkerPink}).bindPopup("<b>"+feature.properties.place +"</b>");; } }, }).addTo(mymap);
-          // change the map zoom so that all the data is shown
-          mymap.fitBounds(earthquakelayer.getBounds()); }
-          }); // end of the inner function
-          } // end of the ajax request
-          // end of the getEarthquakeData function
-
-      // create an event detector to wait for the user's click event and then use the popup to show them where they clicked
-      // note that you don't need to do any complicated maths to convert screen coordinates to real world coordiantes - the Leaflet API does this for you
-      function onMapClick(e) { popup .setLatLng(e.latlng) .setContent("You clicked the map at " + e.latlng.toString()) .openOn(mymap); }
-      console.log(loadLeafletMap);
-      function loadLeafletMap() { mymap = L.map('mapid').setView([51.505, -0.09], 13);
-      // load the tiles
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', { maxZoom: 18, attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 'Imagery © <a href="http://mapbox.com">Mapbox</a>', id: 'mapbox.streets' }).addTo(mymap);
-      // now add the click event detector to the map
-      mymap.on('click', onMapClick);
-      // now call the code to add the markers
-      addBasicMarkers(); }
-      console.log(loadLeafletMap);
-      //end code to add the leaflet map
-      console.log(addBasicMarkers);
-      function addBasicMarkers() {
-        // create custom icon
-        var testMarkerPink = L.AwesomeMarkers.icon({ icon: 'play', markerColor: 'pink' });
-        // add a point
-        L.marker([51.5, -0.09]).addTo(mymap) .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-        // create a geoJSON feature -
-        var geojsonFeature = {
-          "type": "Feature",
-          "properties": {
-            "name": "London",
-            "popupContent": "This is where UCL is based"
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [-0.133481, 51.524611] } };
-            // and add it to the map with icon
-            L.geoJSON(geojsonFeature, { pointToLayer: function (feature, latlng) { return L.marker(latlng, {icon:testMarkerPink}); } }).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+" "+geojsonFeature.properties.popupContent+"<b>");
-            // L.geoJSON(geojsonFeature).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+" "+geojsonFeature.properties.popupContent+"<b>");
-        } // end code to add the basic markers
-      console.log(addBasicMarkers);
       // here define the order of loading map
       // window.onload = loadLeafletMap;
       document.addEventListener('DOMContentLoaded', function() { loadMap(); }, false);
       function loadMap() { loadLeafletMap();} // basemap first than the earthquake data
+      function removeEarthquakeData() { alert("remove the earthquake data here"); mymap.removeLayer( earthquakelayer ); } // remove the earthquake data
 
     </script>
+    <!-- add button -->
     <button id="loadEarthquakeData" name="loadEarthquakeData" onclick="getEarthquakeData()">Click here to load the Earthquake data </button>
+    <button id="removeEarthquakeData" name="removeEarthquakeData" onclick="removeEarthquakeData()">Click here to remove the Earthquake data </button>
 </body>
 </html>
