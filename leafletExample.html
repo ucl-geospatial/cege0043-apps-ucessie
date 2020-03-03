@@ -15,6 +15,8 @@
   <script src="js/basicMap.js"></script>
   <script src="js/earthquakes.js"></script>
   <script src="js/highcrush.js"></script>
+  <script src="js/pokemonGo.js"></script>
+  <script src="js/loadPOI.js"></script>
 </head>
 <body> <!-- the mapid div will hold the map -->
     <!-- div will create a section that holds the item -->
@@ -26,12 +28,17 @@
       function loadMap() { loadLeafletMap();} // basemap first than the earthquake data
       function removeEarthquakeData() { alert("remove the earthquake data here"); mymap.removeLayer( earthquakelayer ); } // remove the earthquake data
       function removeCrushData() { alert("remove the Crush data here"); mymap.removeLayer( highRiskCrashZones); } // remove the crush data
+      function removePOI() { alert("remove the POI data here"); mymap.removeLayer( poiLayer ); } // remove the POI data
 
     </script>
     <!-- add button -->
     <button id="loadEarthquakeData" name="loadEarthquakeData" onclick="getEarthquakeData()">Click here to load the Earthquake data </button>
     <button id="removeEarthquakeData" name="removeEarthquakeData" onclick="removeEarthquakeData()">Click here to remove the Earthquake data </button>
     <button id="loadCrashZone" name="loadCrashZone" onclick="getHighRiskCrashZonesData()">Click here to load the Crash Zone area data </button>
+    <button id="loadPokemon" name="loadPokemon" onclick="getPokemonGoData()">Click here to load the Pokemon area data </button>
+    <button id="loadPOI" name="loadPOI" onclick="getPOIdata()">Click here to load the POI area data </button>
+    <button id="removePOI" name="removePOI" onclick="removePOI()">Click here to remove the POI area data </button>
+
 
 
 </body>
