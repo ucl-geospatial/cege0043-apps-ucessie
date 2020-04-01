@@ -3,8 +3,18 @@
   <title>Simple Form Creation Example</title>
   <script src="js/dataUpload.js"></script>
   <script src="js/utilities.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
   <!-- get the port numbers -->
-  <script> function loadMap() { getPorts(); } document.addEventListener('DOMContentLoaded', function() { console.log("listener domcontentloaded"); loadMap(); }, false); </script>
+  <script> function loadMap() {
+  getPorts();
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+  console.log("listener domcontentloaded");
+  loadMap();
+  }, false);; </script>
 </head>
 <body>
   <h1> This is a simple form</h1>
@@ -37,7 +47,7 @@
 
       <!-- data delete process -->
       <hr> <hr> <label for="deleteID">Delete ID</label>
-      <input type="text" size="25" id="deleteID"/><br /> 
+      <input type="text" size="25" id="deleteID"/><br />
       <button id="startDelete" onclick="deleteRecord()">Delete Record</button>
       <div id="dataDeleteResult">The result of the upload goes here</div> </div>
 </body>
