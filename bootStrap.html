@@ -91,9 +91,11 @@
           </a>
           <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-             <a class="collapse-item" href="#" onclick="alert('menu 9');">Menu 9</a>
+             <a class="collapse-item" href="#" onclick="alert('menu 9');">Location</a>
+             <button id="getUserLocation1" onclick='trackLocation()'>Get Location!</button>
 
-             <a class="collapse-item" href="#" onclick="alert('menu 10');">Menu 10</a>          </div>
+             <a class="collapse-item" href="#" onclick="alert('menu 10');">Menu 10</a>
+           </div>
 
            </div>
          </li>
@@ -125,6 +127,7 @@
 <!-- load funcitonal javascript-->
 <script src="js/loadBasemap.js"></script>
 <script src="js/utilities.js"></script>
+<script src="js/trackLocation.js"></script>
 
 <script>
   function loadMap() {
