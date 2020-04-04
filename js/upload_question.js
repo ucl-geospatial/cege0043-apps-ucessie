@@ -1,3 +1,6 @@
+var user_lat;
+var user_lon;
+
 function startDataUpload() { alert ("start data upload");
 
   // get name/string value
@@ -14,8 +17,8 @@ function startDataUpload() { alert ("start data upload");
   alert(postString);
 
   // now get the geometry values
-  var latitude = document.getElementById("quiz_latitude").value;
-  var longitude = document.getElementById("quiz_longitude").value;
+  var latitude = user_lat;
+  var longitude = user_lon;
   postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
   alert(postString);
 

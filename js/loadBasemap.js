@@ -11,6 +11,8 @@ function onMapClick(e) {
   popup .setLatLng(e.latlng) .setContent("You clicked the map at " + e.latlng.toString()) .openOn(mymap);
    document.getElementById('quiz_latitude').innerHTML = e.latlng.lat;
    document.getElementById('quiz_longitude').innerHTML = e.latlng.lng;
+   user_lat = document.getElementById('quiz_latitude').innerHTML
+   user_lon = document.getElementById('quiz_longitude').innerHTML
    console.log(e.latlng);
 }
 
