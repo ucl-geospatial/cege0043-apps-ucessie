@@ -19,16 +19,6 @@ function startDataUpload() { alert ("start data upload");
   postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
   alert(postString);
 
-  // function should write here to check if user type in correct value
-  // now get the checkbox values - separate them with a | so that they can be
-  // split later on if necessary
-  var checkString = "";
-  for (var i = 1;i< 5;i++){
-    if (document.getElementById("check"+i).checked === true) { checkString = checkString + document.getElementById("check"+i).value + "||" } }
-    postString = postString + "&modulelist="+checkString;
-
-
-
   // now get the radio button values
   //if (document.getElementById("morning").checked) { postString=postString+"&lecturetime=morning"; }
   //if (document.getElementById("afternoon").checked) { postString=postString+"&lecturetime=afternoon"; }
