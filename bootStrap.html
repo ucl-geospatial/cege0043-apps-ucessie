@@ -112,7 +112,7 @@
              <button id="getUserLocation1" onclick='trackLocation()'>Get Location!</button>
              <div id="showLocation">Your position is here!</div>
 
-             <a class="collapse-item" href="#" onclick="Going to help page">Help documentation</a>
+             <a class="collapse-item" href="#" onclick="alet('going to help page')">Help documentation</a>
            </div>
 
            </div>
@@ -147,12 +147,15 @@
 <script src="js/utilities.js"></script>
 <script src="js/trackLocation.js"></script>
 <script src="js/upload_question.js"></script>
+<script src="js/popupForm.js"></script>
 
 
 <script>
   function loadMap() {
   setLocation();
   getPorts();
+  getFormData();
+  loadFormData();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
