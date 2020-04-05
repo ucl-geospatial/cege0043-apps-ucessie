@@ -19,9 +19,10 @@ function getFormData() {
 var formLayer;
 function loadFormData(formData) {
   // convert the text received from the server to JSON
-  var formJSON = JSON.parse(formData);
+  //var formJSON = JSON.parse(formData);
+  //console.log(formJSON);
   // load the geoJSON layer
-  formLayer = L.geoJson(formJSON,
+  formLayer = L.geoJson(formData,
     { // use point to layer to create the points pointToLayer:
       function (feature, latlng) {
         // in this case, we build an HTML DIV string
