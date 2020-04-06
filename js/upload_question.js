@@ -33,7 +33,7 @@ function startDataUpload() { alert ("start data upload");
 }
 // create ajax request/ post - insert data to api
 function processData(postString) {
-  var serviceUrl= "https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI+"/insertQuestion"
+  var serviceUrl= "https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI+"/insertFormData"
   $.ajax({
     url: serviceUrl,
     crossDomain: true,
@@ -48,7 +48,7 @@ document.getElementById("dataUploadResult").innerHTML = JSON.stringify(data); }
 function deleteRecord() {
   var deleteID = document.getElementById("deleteID").value;
   var deleteString = "id="+deleteID + "&port_id="+httpsPortNumberAPI;
-  var serviceUrl= "https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI+"/deleteQuestion";
+  var serviceUrl= "https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI+"/deleteFormData";
   $.ajax({ url: serviceUrl, crossDomain: true, type: "POST", success: function(data){
     console.log(data); dataDeleted(data);}, data: deleteString }); }
     function dataDeleted(data){

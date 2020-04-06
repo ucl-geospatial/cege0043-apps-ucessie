@@ -1,6 +1,6 @@
 function getFormData() {
   $.ajax(
-    {url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/quizquestions/"+ httpsPortNumberAPI ,
+    {url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "getGeoJSON/quizquestions/"+ httpsPortNumberAPI ,
     crossDomain: true,
      success:
    function(result){ loadFormData(result); }});
