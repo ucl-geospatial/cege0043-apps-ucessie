@@ -155,12 +155,13 @@
 
 <script>
   function loadMap() {
-  setLocation();
+  loadLeafletMap();
+  loadUserPosition();
   getPorts();
   getFormData();
   loadFormData();
 }
-
+setInterval(locate, 3000);
 document.addEventListener('DOMContentLoaded', function() {
   console.log("listener domcontentloaded");
   loadMap();

@@ -1,8 +1,8 @@
 var user_lat;
 var user_lon;
 
-function startDataUpload() { alert ("start data upload");
-
+function startDataUpload() {
+  alert ("start data upload");
   // get name/string value
   var question_title = document.getElementById("question_title").value;
   var question_text = document.getElementById("question_text").value;
