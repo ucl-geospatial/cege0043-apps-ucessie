@@ -42,9 +42,12 @@ function loadFormData(formData) {
         // for the assignment this will of course vary - you can use feature.properties.correct_answer
         htmlString = htmlString + "<div id=answer"+feature.properties.id+" hidden>feature.properties.correct_answer</div>";
         htmlString = htmlString + "</div>";
+        console.log(htmlString);
+        console.log(latlng);
         return L.marker(latlng).bindPopup(htmlString);
       },
-    }).addTo(mymap); mymap.fitBounds(formLayer.getBounds());
+    }).addTo(mymap);
+    mymap.fitBounds(formLayer.getBounds());
 }
 
 function checkAnswer(questionID) {

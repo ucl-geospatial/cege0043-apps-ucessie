@@ -4,7 +4,7 @@ var quiz_lat;
 var quiz_lon;
 var latlng;
 var current_position;
-current_accuracy;
+var current_accuracy;
 
 // get location from starting pointToLayer
 alert('getting location');
@@ -32,7 +32,7 @@ function loadLeafletMap() {
   // now add the click event detector to the map
   mymap.on('click', onMapClick);
   // now call the code to add the markers
-  addBasicMarkers();
+  //addBasicMarkers();
 }
 
 // get current showPosition
@@ -40,13 +40,13 @@ function loadLeafletMap() {
 function onLocationFound(e) {
     // if position defined, then remove the existing position marker and accuracy circle from the map
     if (current_position) {
-        map.removeLayer(current_position);
-        map.removeLayer(current_accuracy);
+        mymap.removeLayer(current_position);
+        mymap.removeLayer(current_accuracy);
     }
 
     var radius = e.accuracy / 2;
 
-      current_position = L.marker(e.latlng).addTo(map)
+      current_position = L.marker(e.latlng).addTo(mymap)
         .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
       current_accuracy = L.circle(e.latlng, radius).addTo(map);
@@ -58,34 +58,11 @@ function onLocationFound(e) {
 
     // wrap map.locate in a function
     function locate() {
-      map.locate({setView: true, maxZoom: 16});
+      mymap.locate({setView: true, maxZoom: 16});
     }
 
     // call locate every 3 seconds... forever
     function loadUserPosition(){
-      map.on('locationfound', onLocationFound);
-      map.on('locationerror', onLocationError);
+      mymap.on('locationfound', onLocationFound);
+      mymap.on('locationerror', onLocationError);
     }
-
-
-
-function addBasicMarkers(position) {
-  // create custom icon
-  var testMarkerPink = L.AwesomeMarkers.icon({ icon: 'play', markerColor: 'pink' });
-  // add a point
-  L.marker([lat,lon]).addTo(mymap) .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-  // create a geoJSON feature -
-  var geojsonFeature = {
-    "type": "Feature",
-    "properties": {
-      "name": "User location",
-      "popupContent": "This is where you are!"
-    },
-    "geometry": {
-      "type": "Point",
-      "coordinates": [lat, lon] } };
-      // and add it to the map with icon
-      L.geoJSON(geojsonFeature, { pointToLayer: function (feature, latlng) { return L.marker(latlng, {icon:testMarkerPink}); } }).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+" "+geojsonFeature.properties.popupContent+"<b>");
-      // L.geoJSON(geojsonFeature).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+" "+geojsonFeature.properties.popupContent+"<b>");
-  } // end code to add the basic markers
-console.log(addBasicMarkers);

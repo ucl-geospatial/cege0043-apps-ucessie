@@ -1,5 +1,5 @@
-var user_lat;
-var user_lon;
+var quiz_lat;
+var quiz_lon;
 
 function startDataUpload() {
   alert ("start data upload");
