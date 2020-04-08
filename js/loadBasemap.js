@@ -63,6 +63,6 @@ function onLocationFound(e) {
 
     // call locate every 3 seconds... forever
     function loadUserPosition(){
-      mymap.on('locationfound', onLocationFound);
-      mymap.on('locationerror', onLocationError);
+      mymap.on('locationfound', onLocationFound());
+      mymap.on('locationerror', onLocationError());
     }

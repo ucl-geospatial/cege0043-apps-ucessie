@@ -19,17 +19,22 @@ function getFormData() {
 // pop-up menu on a point if necessary
 // we can also use this to determine distance for the proximity alert
 var formLayer;
-function loadFormData(formData) {
+function loadFormData() {
+  $.ajax({
+     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/quizquestions/"+ httpsPortNumberAPI ,
+     crossDomain: true,
+     success: function(result){
+      console.log(result);
   // convert the text received from the server to JSON
   //var formJSON = JSON.parse(formData);
-  console.log(formData);
+  //console.log(formData);
   // load the geoJSON layer
-  formLayer = L.geoJson(formData,
+  formLayer = L.geoJson(result,
     { // use point to layer to create the points pointToLayer:
       function (feature, latlng) {
         // in this case, we build an HTML DIV string
         // using the values in the data
-        var htmlString = "<DIV id='popup'"+ feature.properties.id + "><h2>" + feature.properties.question_title + "</h2><br>";
+        var htmlString = "<div id='popup'"+feature.properties.id +">"+"<h2>" + feature.properties.question_title + "</h2><br>";
         htmlString = htmlString + "<h3>"+feature.properties.question_text + "</h3><br>";
         // unique id for each answer
         htmlString = htmlString + "<input type='radio' name='answer' id ='"+feature.properties.id+"_1'/>"+feature.properties.answer_1+"<br>";
@@ -48,7 +53,10 @@ function loadFormData(formData) {
       },
     }).addTo(mymap);
     mymap.fitBounds(formLayer.getBounds());
-}
+    }
+  });
+};
+
 
 function checkAnswer(questionID) {
   // get the answer from the hidden div
