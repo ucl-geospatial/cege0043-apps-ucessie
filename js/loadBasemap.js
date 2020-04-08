@@ -33,6 +33,8 @@ function loadLeafletMap() {
   mymap.on('click', onMapClick);
   // now call the code to add the markers
   //addBasicMarkers();
+  // load setView
+  locate();
 }
 
 // get current showPosition
