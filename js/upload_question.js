@@ -17,8 +17,8 @@ function startDataUpload() {
   alert(postString);
 
   // now get the geometry values
-  var latitude = user_lat;
-  var longitude = user_lon;
+  var latitude = quiz_lat;
+  var longitude = quiz_lon;
   postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
   alert(postString);
 

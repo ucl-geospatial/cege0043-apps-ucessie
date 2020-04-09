@@ -97,7 +97,7 @@
               <h6 class="collapse-header">Delete record</h6>
               <label for="deleteID">Delete ID</label><input type="text" size="25" id="deleteID"/><br />
               <button id="startDelete" onclick="deleteRecord()">Delete Record</button>
-              <div id="dataDeleteResult">The result of the upload goes here</div>
+              <div id="dataDeleteResult">The result of the delete goes here</div>
               <a class="collapse-item"  onclick="alert('menu 7');">View all question</a>
               <button id="loadFormData" name="loadFormData" onclick="loadFormData()">Click here to load the question popup data </button>
               <button id="removeFormData" name="removeFormData" onclick="removeFormData()">Click here to remove the question popup data </button>
@@ -159,13 +159,16 @@
 <script>
   function loadMap() {
   loadLeafletMap();
-  loadUserPosition();
+  //loadUserPosition();
   getPorts();
+  locate();
 }
 
 // remove layer function
 function removeFormData() { alert("remove the question layer here"); mymap.removeLayer( formLayer ); }
-setInterval(locate, 60000); // request relocate user postion
+
+setInterval(locate, 3000); // request relocate user postion
+
 document.addEventListener('DOMContentLoaded', function() {
   console.log("listener domcontentloaded");
   loadMap();

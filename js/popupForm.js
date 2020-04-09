@@ -34,19 +34,20 @@ function loadFormData() {
       function (feature, latlng) {
         // in this case, we build an HTML DIV string
         // using the values in the data
-        var htmlString = "<div id='popup'"+feature.properties.id +">"+"<h2>" + feature.properties.question_title + "</h2><br>";
-        htmlString = htmlString + "<h3>"+feature.properties.question_text + "</h3><br>";
+        //var htmlString = "<div id='popup'"+feature.properties.id +">s<h2>" + feature.properties.question_title + "</h2><br>";
+        //htmlString = htmlString + "<h3>"+feature.properties.question_text + "</h3><br>";
         // unique id for each answer
-        htmlString = htmlString + "<input type='radio' name='answer' id ='"+feature.properties.id+"_1'/>"+feature.properties.answer_1+"<br>";
-        htmlString = htmlString + "<input type='radio' name='answer' id ='"+feature.properties.id+"_2'/>"+feature.properties.answer_2+"<br>";
-        htmlString = htmlString + "<input type='radio' name='answer' id ='"+feature.properties.id+"_3'/>"+feature.properties.answer_3+"<br>";
-        htmlString = htmlString + "<input type='radio' name='answer' id ='"+feature.properties.id+"_4'/>"+feature.properties.answer_4+"<br>";
-        htmlString = htmlString + "<button onclick='checkAnswer(" + feature.properties.id + ");return false;'>Submit Answer</button>";
+        //htmlString = htmlString + "<input type='radio' name='answer' id ='"+feature.properties.id+"_1'/>"+feature.properties.answer_1+"<br>";
+        //htmlString = htmlString + "<input type='radio' name='answer' id ='"+feature.properties.id+"_2'/>"+feature.properties.answer_2+"<br>";
+        //htmlString = htmlString + "<input type='radio' name='answer' id ='"+feature.properties.id+"_3'/>"+feature.properties.answer_3+"<br>";
+        //htmlString = htmlString + "<input type='radio' name='answer' id ='"+feature.properties.id+"_4'/>"+feature.properties.answer_4+"<br>";
+        //htmlString = htmlString + "<button onclick='checkAnswer(" + feature.properties.id + ");return false;'>Submit Answer</button>";
         // now include a hidden element with the answer
         // in this case the answer is alwasy the first choice
         // for the assignment this will of course vary - you can use feature.properties.correct_answer
-        htmlString = htmlString + "<div id=answer"+feature.properties.id+" hidden>feature.properties.correct_answer</div>";
-        htmlString = htmlString + "</div>";
+        //htmlString = htmlString + "<div id=answer"+feature.properties.id+" hidden>feature.properties.correct_answer</div>";
+        //htmlString = htmlString + "</div>";
+        htmlString = "<div id='test1'><b>"+ feature.properties.question_text+"</b></div>";
         console.log(htmlString);
         console.log(latlng);
         return L.marker(latlng).bindPopup(htmlString);

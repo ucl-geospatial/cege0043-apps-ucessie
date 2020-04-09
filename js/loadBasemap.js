@@ -34,7 +34,6 @@ function loadLeafletMap() {
   // now call the code to add the markers
   //addBasicMarkers();
   // load setView
-  locate();
 }
 
 // get current showPosition
@@ -46,10 +45,10 @@ function onLocationFound(e) {
         mymap.removeLayer(current_accuracy);
     }
 
-    var radius = e.accuracy / 2;
+    var radius = e.accuracy;
 
       current_position = L.marker(e.latlng).addTo(mymap)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+        .bindPopup("You are around here!").openPopup();
 
       current_accuracy = L.circle(e.latlng, radius).addTo(map);
     }
