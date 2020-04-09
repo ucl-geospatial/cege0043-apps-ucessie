@@ -5,6 +5,7 @@ var quiz_lon;
 var latlng;
 var current_position;
 var current_accuracy;
+var userlayer;
 
 // get location from starting pointToLayer
 alert('getting location');

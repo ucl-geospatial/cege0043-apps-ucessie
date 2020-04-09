@@ -159,15 +159,14 @@
 <script>
   function loadMap() {
   loadLeafletMap();
-  loadUserPosition();
   getPorts();
-  locate();
 }
 
 // remove layer function
 function removeFormData() { alert("remove the question layer here"); mymap.removeLayer( formLayer ); }
-
-setInterval(locate, 3000); // request relocate user postion
+// locate user position
+loadUserPosition();
+setInterval(locate(), 3000); // request relocate user postion
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log("listener domcontentloaded");
