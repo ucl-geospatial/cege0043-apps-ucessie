@@ -1,3 +1,7 @@
+var mymap;
+var popup = L.popup();
+var formLayer;
+
 function getFormData() {
   $.ajax(
     {
@@ -18,8 +22,9 @@ function getFormData() {
 // keep the layer global so that we can automatically pop up a
 // pop-up menu on a point if necessary
 // we can also use this to determine distance for the proximity alert
-var formLayer;
+
 function loadFormData() {
+  var testMarkerRed = L.AwesomeMarkers.icon({ icon: 'play', markerColor: 'red' });
   $.ajax({
      url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/quizquestions/"+ httpsPortNumberAPI ,
      crossDomain: true,
@@ -50,7 +55,7 @@ function loadFormData() {
         var htmlString = "<b>"+ feature.properties.question_text+"</b>";
         console.log(htmlString);
         console.log(latlng);
-        return L.marker(latlng).bindPopup(htmlString);
+        return L.marker(latlng).bindPopup("<b>"+ feature.properties.question_text+"</b>");
       },
     }).addTo(mymap);
     mymap.fitBounds(formLayer.getBounds());
