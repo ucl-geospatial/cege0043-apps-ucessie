@@ -35,7 +35,12 @@ function loadLeafletMap() {
   // now call the code to add the markers
   L.marker([51.5, -0.09]).addTo(mymap) .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
   //addBasicMarkers();
-  // load setView
+  // load View
+  mymap.on('locationfound', onLocationFound());
+  mymap.on('locationerror', onLocationError());
+  // locate view
+  mymap.locate({setView: true, maxZoom: 16});
+
 }
 
 // get current showPosition

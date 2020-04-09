@@ -123,6 +123,7 @@
 
            </div>
          </li>
+         <p id="current_time"></p>
 
 
 
@@ -161,12 +162,20 @@
   loadLeafletMap();
   getPorts();
 }
-
+// display current time
+// adapt from w3 school
+setInterval(myTimer, 1000);
+/
+function myTimer() {
+  var d = new Date();
+  var t = d.toLocaleTimeString();
+  document.getElementById("current_time").innerHTML = t;
+}
 // remove layer function
 function removeFormData() { alert("remove the question layer here"); mymap.removeLayer( formLayer ); }
 // locate user position
 
-setInterval(locate(), 3000); // request relocate user postion
+//setInterval(locate, 3000); // request relocate user postion
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log("listener domcontentloaded");
