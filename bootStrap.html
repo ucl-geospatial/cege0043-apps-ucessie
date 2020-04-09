@@ -118,7 +118,7 @@
              <button id="getUserLocation1" onclick='trackLocation()'>Get Location!</button>
              <div id="showLocation">Your position is here!</div>
 
-             <a class="collapse-item" href="#" onclick="alet('going to help page')">Help documentation</a>
+             <a class="collapse-item" href="#" onclick="alert('going to help page')">Help documentation</a>
            </div>
 
            </div>
@@ -159,7 +159,7 @@
 <script>
   function loadMap() {
   loadLeafletMap();
-  //loadUserPosition();
+  loadUserPosition();
   getPorts();
   locate();
 }
