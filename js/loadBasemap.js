@@ -3,8 +3,8 @@ var popup = L.popup();
 var quiz_lat;
 var quiz_lon;
 var latlng;
-var current_position;
-var current_accuracy;
+var user_lat;
+var user_lon;
 var userlayer;
 
 // get location from starting pointToLayer
@@ -22,50 +22,13 @@ function onMapClick(e) {
 
 // load base map
 function loadLeafletMap() {
-  mymap = L.map('content-wrapper');
+  console.log(user_lat + " " + user_lon);
+  mymap = L.map('content-wrapper').setView([user_lat, user_lon], 13);
   // load the tiles
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', { maxZoom: 18, attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 'Imagery © <a href="http://mapbox.com">Mapbox</a>', id: 'mapbox.streets' }).addTo(mymap);
   // now add the click event detector to the map
   mymap.on('click', onMapClick);
   // now call the code to add the markers
   L.marker([51.5, -0.09]).addTo(mymap) .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-  //addBasicMarkers();
-  // load View
-  mymap.on('locationfound', onLocationFound());
-  mymap.on('locationerror', onLocationError());
-  // locate view
-  mymap.locate({setView: true, maxZoom: 16});
 
 }
-
-// get current showPosition
-// placeholders for the L.marker and L.circle representing user's current position and accuracy
-function onLocationFound(e) {
-    // if position defined, then remove the existing position marker and accuracy circle from the map
-    if (current_position) {
-        mymap.removeLayer(current_position);
-        mymap.removeLayer(current_accuracy);
-    }
-
-    var radius = e.accuracy;
-
-      current_position = L.marker(e.latlng).addTo(mymap)
-        .bindPopup("You are around here!").openPopup();
-
-      current_accuracy = L.circle(e.latlng, radius).addTo(map);
-    }
-
-    function onLocationError(e) {
-      alert(e.message);
-    }
-
-    // wrap map.locate in a function
-    function locate() {
-      mymap.locate({setView: true, maxZoom: 16});
-    }
-
-    // call locate every 3 seconds... forever
-    function loadUserPosition(){
-      mymap.on('locationfound', onLocationFound());
-      mymap.on('locationerror', onLocationError());
-    }
