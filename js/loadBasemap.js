@@ -18,11 +18,6 @@ function onMapClick(e) {
    console.log(e.latlng);
 }
 
-// set center user view
-function trackLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(loadLeafletMap); }
-  else { document.getElementById('showLocation').innerHTML = "Geolocation is not supported by this browser."; } }
 
 
 // load base map
