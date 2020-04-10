@@ -154,6 +154,7 @@
 <script src="js/trackLocation.js"></script>
 <script src="js/upload_question.js"></script>
 <script src="js/popupForm.js"></script>
+<script src="js/testResponse.js"></script>
 
 
 <script>
@@ -181,7 +182,10 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log("listener domcontentloaded");
   loadMap();
 }, false);
-
+// get getNearest
+document.getElementById("getUserLocation").addEventListener("click", function() {
+  calculateNearest();
+});
 </script>
 
   </html>
