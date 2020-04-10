@@ -2,7 +2,7 @@ var quiz_lat;
 var quiz_lon;
 
 function startDataUpload() {
-  alert ("start data upload");
+  alert ("start question upload");
   // get name/string value
   var question_title = document.getElementById("question_title").value;
   var question_text = document.getElementById("question_text").value;
@@ -31,6 +31,8 @@ function startDataUpload() {
   alert (postString); // close off the startDataUpload function
   processData(postString); //
 }
+
+
 // create ajax request/ post - insert data to api
 function processData(postString) {
   var serviceUrl= "https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI+"/insertFormData"

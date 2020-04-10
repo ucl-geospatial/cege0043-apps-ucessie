@@ -39,7 +39,7 @@ function loadFormData() {
       pointToLayer: function (feature, latlng) {
         // in this case, we build an HTML DIV string
         // using the values in the data
-        var htmlString = "<div id='popup'"+feature.properties.id +">s<h2>" + feature.properties.question_title + "</h2><br>";
+        var htmlString = "<div id='popup'"+feature.properties.id +"><h2>" + feature.properties.question_title + "</h2><br>";
         htmlString = htmlString + "<h3>"+feature.properties.question_text + "</h3><br>";
         // unique id for each answer
         htmlString = htmlString + "<input type='radio' name='answer' id ='"+feature.properties.id+"_1'/>"+feature.properties.answer_1+"<br>";
@@ -67,6 +67,7 @@ function checkAnswer(questionID) {
   // get the answer from the hidden div
   // NB - do this BEFORE you close the pop-up as when you close the pop-up the DIV is destroyed
   var answer = document.getElementById("answer"+questionID).innerHTML;
+  console.log(answer)
   // now check the question radio buttons
   var correctAnswer = false;
   var answerSelected = 0;
@@ -82,4 +83,22 @@ function checkAnswer(questionID) {
       // call an AJAX routine using the data
       // the answerSelected variable holds the number of the answer
       //that the user picked
-    }
+      // get answer string
+      function startAnswerUpload(){
+        alert("upload answer!");
+        // get values
+        postString = "port_id="+httpsPortNumberAPI;
+        postString = postString+"&question_id"+questionID;
+        postString = postString+"&answer_selected"+answerSelected;
+        postString = postString+"&correct_answer"+answer;
+        alert(postString);
+        // create ajax request/ post - insert data to quizanswers
+        function processAnswer(postString) {
+          var serviceUrl= "https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI+"/inputAnswer"
+          $.ajax({
+            url: serviceUrl,
+            crossDomain: true,
+            type: "POST",
+            success: function(data){console.log(data); dataUploaded(data);}, data: postString }); };
+      };
+    };
