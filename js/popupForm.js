@@ -89,9 +89,9 @@ function checkAnswer(questionID) {
         alert("upload answer!");
         // get values
         postString = "port_id="+httpsPortNumberAPI;
-        postString = postString+"&question_id"+questionID;
-        postString = postString+"&answer_selected"+answerSelected;
-        postString = postString+"&correct_answer"+answer;
+        postString = postString+"&question_id="+questionID;
+        postString = postString+"&answer_selected="+answerSelected;
+        postString = postString+"&correct_answer="+answer;
         alert(postString);
         processAnswer(postString);
         // create ajax request/ post - insert data to quizanswers
