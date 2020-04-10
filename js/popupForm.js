@@ -50,7 +50,7 @@ function loadFormData() {
         // now include a hidden element with the answer
         // in this case the answer is alwasy the first choice
         // for the assignment this will of course vary - you can use feature.properties.correct_answer
-        htmlString = htmlString + "<div id=answer"+feature.properties.id+" hidden>feature.properties.correct_answer</div>";
+        htmlString = htmlString + "<div id=answer"+feature.properties.id+" hidden>"+feature.properties.correct_answer+"</div>";
         htmlString = htmlString + "</div>";
         console.log(htmlString);
         console.log(latlng);
@@ -81,6 +81,7 @@ function checkAnswer(questionID) {
       mymap.closePopup();
       // the code to upload the answer to the server would go here
       // call an AJAX routine using the data
+      startAnswerUpload();
       // the answerSelected variable holds the number of the answer
       //that the user picked
       // get answer string
@@ -92,6 +93,7 @@ function checkAnswer(questionID) {
         postString = postString+"&answer_selected"+answerSelected;
         postString = postString+"&correct_answer"+answer;
         alert(postString);
+        processAnswer(postString);
         // create ajax request/ post - insert data to quizanswers
         function processAnswer(postString) {
           var serviceUrl= "https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI+"/inputAnswer"
