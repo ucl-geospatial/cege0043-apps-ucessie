@@ -66,8 +66,10 @@ function getCorrectAnswer() {
    //end of the AJAX call
  }
  function loadCorrectAnswer(result){
-   var ans = result.num_questions[0];
-   document.getElementById("loadCorrectAnswer").innerHTML = "You have" + ans +" questions answered correctly!";
+   var ans = JSON.parse(result);
+   //ans = result.array_to_json.num_questions;
+   document.getElementById("loadCorrectAnswer").innerHTML = "You have questions answered correctly!";
+   alert("Here is result: " + ans);
  }
 
  [
