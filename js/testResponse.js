@@ -18,7 +18,7 @@ function getFormData() {
 // advanced function 1
 // create ajax request/ post - insert data to api
 function calculateNearest() {
-  var serviceUrl= "https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI+"/getGeoJson/getNearest/"+httpsPortNumberAPI;
+  var serviceUrl= "https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI+"/getGeoJson/getNearest";
   var postString = "user_lat="+user_lat+"&user_lon="+user_lon;
   $.ajax({
     url: serviceUrl,
@@ -52,7 +52,7 @@ function drawNearest(data){
         return L.marker(latlng).bindPopup(htmlString);
       },
     }).addTo(mymap);
-    mymap.fitBounds(formLayer.getBounds());
+    mymap.fitBounds(nearestLayer.getBounds());
 }
 // advanced function 1
 // advanced function 1

@@ -11,6 +11,6 @@ function trackLocation() {
 function showPosition(position) {
   user_lat = position.coords.latitude;
   user_lon = position.coords.longitude;
-  var marker = L.marker([user_lat,user_lon]).addTo(mymap).bindPopup("<b>You are here!</b>").openPopup();
+  //var marker = L.marker([user_lat,user_lon]).addTo(mymap).bindPopup("<b>You are here!</b>").openPopup();
   mymap.setView([user_lat, user_lon], 13)
   document.getElementById('showLocation').innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude; }
