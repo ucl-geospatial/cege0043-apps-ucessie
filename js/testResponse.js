@@ -84,12 +84,25 @@ function getQuizRanking() {
    //end of the AJAX call
  }
  function loadRanking(result){
-   var ans = JSON.stringify(result);
+   var ans = result.array_to_json.rank;
    document.getElementById("loadRank").innerHTML = ans;
-
  }
 
-// advanced function 1
+// advanced function (Top Five participates)
+function getQuizRanking() {
+  $.ajax(
+    {
+     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/getHighFive/"+ httpsPortNumberAPI ,
+     crossDomain: true,
+     success: function(result){
+       console.log(result);
+       loadHighFive(result);}});
+   //end of the AJAX call
+ }
+ function loadHighFive(result){
+   var ans = JSON.parse(result);
+   document.getElementById("loadHighFive").innerHTML = ans;
+ }
 // advanced function 1
 // advanced function 1
 // advanced function 1
