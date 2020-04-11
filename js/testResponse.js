@@ -15,7 +15,7 @@ function getFormData() {
        loadFormData(result); }});
    //end of the AJAX call
  }
-// advanced function 1
+// advanced function
 // create ajax request/ post - insert data to api
 function calculateNearest() {
   var serviceUrl= "https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI+"/getGeoJson/getNearest";
@@ -54,7 +54,21 @@ function drawNearest(data){
     }).addTo(mymap);
     mymap.fitBounds(nearestLayer.getBounds());
 }
-// advanced function 1
+// advanced function (Correct answer)
+function getCorrectAnswer() {
+  $.ajax(
+    {
+     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/getCorrectAnswer/"+ httpsPortNumberAPI ,
+     crossDomain: true,
+     success: function(result){
+       console.log(result);
+       loadCorrectAnswer(result); }});
+   //end of the AJAX call
+ }
+ function loadCorrectAnswer(result){
+   var ans = JSON.stringify(result);
+   document.getElementById("loadCorrectAnswer").innerHTML = "You have" + ans +" questions answered correctly!"; 
+ }
 // advanced function 1
 // advanced function 1
 // advanced function 1

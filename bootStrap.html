@@ -39,6 +39,7 @@
         </a>
 
         <!-- Divider -->
+        <!-- Quesiton App -->
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -70,24 +71,41 @@
 
 
         <!-- Divider -->
+        <!-- Quiz App -->
         <hr class="sidebar-divider">
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item d-lg-none" >
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Start Quiz</span>
+            <span id="quizSpan" >Start Quiz</span>
 
           </a>
           <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="#" onclick="loadFormData()";>Answer Question</a>
-              <a class="collapse-item" href="#" onclick="alert('menu 4');">Question list</a>
+              <a class="collapse-item" href="#" onclick="loadFormData()";>Start Answer Question!</a>
+              <a class="collapse-item" href="#" id="fiveNearest" onclick="trackLocation()">Find Five nearest question!</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Another menu of Quiz -->
+        <li class="nav-item d-lg-none" >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#quizInfo" aria-expanded="true" aria-controls="collapseThree">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Quiz Information</span>
+
+          </a>
+          <div id="quizInfo" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="#" onclick="getCorrectAnswer()";>Number of Correct Answer!</a> 
+              <div id="loadCorrectAnswer">The result of the request goes here!</div> <br /> <br />
+
             </div>
           </div>
         </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item d-none d-lg-block">
           <a class="nav-link collapsed"  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>Modify</span>
@@ -159,10 +177,11 @@
 
 <script>
   function loadMap() {
-  trackLocation();
-  loadLeafletMap();
+  trackLocation(); // get user location
+  loadLeafletMap(); // basemap
   getPorts();
 }
+
 // display current time
 // adapt from w3 school
 setInterval(myTimer, 1000);
@@ -174,18 +193,28 @@ function myTimer() {
 }
 // remove layer function
 function removeFormData() { alert("remove the question layer here"); mymap.removeLayer( formLayer ); }
-// locate user position
 
-//setInterval(locate, 3000); // request relocate user postion
-
+// load base map
 document.addEventListener('DOMContentLoaded', function() {
   console.log("listener domcontentloaded");
   loadMap();
 }, false);
-// get getNearest
+
+// get getNearest for both quiz and question
 document.getElementById("getUserLocation").addEventListener("click", function() {
   calculateNearest();
 });
+
+// get nearest for quiz
+document.getElementById("fiveNearest").addEventListener("click", function() {
+  calculateNearest();
+});
+
+// load quiz when open mobile appear
+document.getElementById("quizSpan").addEventListener("click", function() {
+  loadFormData();
+});
+
 </script>
 
   </html>
