@@ -66,9 +66,8 @@ function getCorrectAnswer() {
    //end of the AJAX call
  }
  function loadCorrectAnswer(result){
-   var ans = result.array_to_json.num_questions;
-   document.getElementById("loadCorrectAnswer").innerHTML = "You have questions answered correctly!";
-   alert("Here is result: " + ans);
+   var ans = result[0].array_to_json[0].num_questions;
+   document.getElementById("loadCorrectAnswer").innerHTML = "You have " + ans +"questions answered correctly!";
  }
 
 
@@ -84,8 +83,8 @@ function getQuizRanking() {
    //end of the AJAX call
  }
  function loadRanking(result){
-   var ans = result.array_to_json.rank;
-   document.getElementById("loadRank").innerHTML = ans;
+   var ans = result[0].array_to_json[0].rank;
+   document.getElementById("loadRank").innerHTML = "You are currently ranked: "+ ans;
  }
 
 // advanced function (Top Five participates)
@@ -100,8 +99,9 @@ function getQuizRanking() {
    //end of the AJAX call
  }
  function loadHighFive(result){
-   var ans = JSON.parse(result);
-   document.getElementById("loadHighFive").innerHTML = ans;
+   var rank = result[0].array_to_json[0].rank;
+   var port_id = result[0].array_to_json[0].port_id;
+   document.getElementById("loadHighFive").innerHTML = "rank: " + rank + "<br" + "port_id:" + port_id  ;
  }
 // advanced function 1
 // advanced function 1
