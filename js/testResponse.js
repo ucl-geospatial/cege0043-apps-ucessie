@@ -80,13 +80,13 @@ function getQuizRanking() {
      crossDomain: true,
      success: function(result){
        console.log(result);
-       loadCorrectAnswer(result); }});
+       loadRanking(result);}});
    //end of the AJAX call
  }
  function loadRanking(result){
-   var ans = result.array_to_json.num_questions;
-   document.getElementById("loadCorrectAnswer").innerHTML = "You have questions answered correctly!";
-   alert("Here is result: " + ans);
+   var ans = JSON.stringify(result);
+   document.getElementById("loadRank").innerHTML = ans;
+
  }
 
 // advanced function 1

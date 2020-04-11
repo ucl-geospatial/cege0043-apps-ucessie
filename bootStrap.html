@@ -97,8 +97,10 @@
           </a>
           <div id="quizInfo" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="#" onclick="getCorrectAnswer()";>Number of Correct Answer!</a> 
+              <a class="collapse-item" href="#" onclick="getCorrectAnswer()";>Number of Correct Answer!</a>
               <div id="loadCorrectAnswer">The result of the request goes here!</div> <br /> <br />
+              <a class="collapse-item" href="#" onclick="getQuizRanking()";>Load your ranking!</a>
+              <div id="loadRank">The result of the request goes here!</div> <br /> <br />
 
             </div>
           </div>
@@ -165,19 +167,17 @@
   <script src="js/sb-admin-2.js"></script>
 
 
-<!-- functionality to get ports -->
-<!-- load funcitonal javascript-->
-<script src="js/loadBasemap.js"></script>
-<script src="js/utilities.js"></script>
-<script src="js/trackLocation.js"></script>
-<script src="js/upload_question.js"></script>
-<script src="js/popupForm.js"></script>
-<script src="js/testResponse.js"></script>
+  <!-- functionality to get ports -->
+  <!-- load funcitonal javascript-->
+  <script src="js/loadBasemap.js"></script>
+  <script src="js/utilities.js"></script>
+  <script src="js/upload_question.js"></script>
+  <script src="js/popupForm.js"></script>
+  <script src="js/testResponse.js"></script>
 
 
 <script>
   function loadMap() {
-  trackLocation(); // get user location
   loadLeafletMap(); // basemap
   getPorts();
 }
@@ -191,6 +191,9 @@ function myTimer() {
   var t = d.toLocaleTimeString();
   document.getElementById("current_time").innerHTML = t;
 }
+
+// script with ajax requests
+
 // remove layer function
 function removeFormData() { alert("remove the question layer here"); mymap.removeLayer( formLayer ); }
 
@@ -216,5 +219,7 @@ document.getElementById("quizSpan").addEventListener("click", function() {
 });
 
 </script>
+
+
 
   </html>
