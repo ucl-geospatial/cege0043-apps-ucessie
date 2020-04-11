@@ -66,19 +66,29 @@ function getCorrectAnswer() {
    //end of the AJAX call
  }
  function loadCorrectAnswer(result){
-   var ans = JSON.parse(result);
-   //ans = result.array_to_json.num_questions;
+   var ans = result.array_to_json.num_questions;
    document.getElementById("loadCorrectAnswer").innerHTML = "You have questions answered correctly!";
    alert("Here is result: " + ans);
  }
 
- [
-   {"array_to_json":[
-     {"num_questions":3}
-   ]
+
+// advanced function (Show Ranking)
+function getQuizRanking() {
+  $.ajax(
+    {
+     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/getRanking/"+ httpsPortNumberAPI ,
+     crossDomain: true,
+     success: function(result){
+       console.log(result);
+       loadCorrectAnswer(result); }});
+   //end of the AJAX call
  }
-]
-// advanced function 1
+ function loadRanking(result){
+   var ans = result.array_to_json.num_questions;
+   document.getElementById("loadCorrectAnswer").innerHTML = "You have questions answered correctly!";
+   alert("Here is result: " + ans);
+ }
+
 // advanced function 1
 // advanced function 1
 // advanced function 1
