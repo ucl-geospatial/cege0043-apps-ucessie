@@ -84,11 +84,12 @@ function getQuizRanking() {
  }
  function loadRanking(result){
    var ans = result[0].array_to_json[0].rank;
-   document.getElementById("loadRank").innerHTML = "You are currently ranked: "+ ans;
+   console.log(ans);
+   document.getElementById("loadRank").innerHTML = "You are currently ranked: " + ans ;
  }
 
 // advanced function (Top Five participates)
-function getQuizRanking() {
+function getHighFive() {
   $.ajax(
     {
      url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/getHighFive/"+ httpsPortNumberAPI ,
@@ -101,7 +102,8 @@ function getQuizRanking() {
  function loadHighFive(result){
    var rank = result[0].array_to_json[0].rank;
    var port_id = result[0].array_to_json[0].port_id;
-   document.getElementById("loadHighFive").innerHTML = "rank: " + rank + "<br" + "port_id:" + port_id  ;
+   for(var i=0; i < rank.length; i++)
+    document.getElementById("loadHighFive").innerHTML += "rank: "+rank[i]+", port_id: "+port_id[i] + "<br>";
  }
 // advanced function 1
 // advanced function 1

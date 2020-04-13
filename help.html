@@ -1,0 +1,60 @@
+
+<DOCTYPE html>
+  <html lang="en">
+  <head>
+    <!-- Use correct character set. -->
+    <meta charset="utf-8">
+    <!-- boostrap -->
+    <!-- Tell IE to use the latest, best version. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- custom fonts and styles for the bootstrap template -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  crossorigin="anonymous">
+    <link href="css/sb-admin-2.css" type="text/css" rel="stylesheet">
+
+    <title>Quiz App Help Page</title>
+    <!-- adapted from: https://blackrockdigital.github.io/startbootstrap-sb-admin-2/ -->
+  </head>
+  <body id="page-top">
+    <!-- Whole page -->
+    <div id="wrapper" class="bg-gradient-secondary">
+      <!-- Main Content -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Content display-->
+        <div class="row justify-content-center">
+          <h1>Quiz App Tutorial</h1>
+          <p id="current_time"></p><br>
+
+        </div>
+      </div>
+      <!-- End of Main Content -->
+    </div>
+    <!-- end of wrapper -->
+
+  </body>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="js/sb-admin-2.js"></script>
+
+
+<script>
+// display current time
+// adapt from w3 school
+setInterval(myTimer, 1000);
+
+function myTimer() {
+  var d = new Date();
+  var t = d.toLocaleTimeString();
+  document.getElementById("current_time").innerHTML = t;
+}
+
+</script>
+
+
+
+  </html>
