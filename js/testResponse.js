@@ -102,6 +102,7 @@ function getHighFive() {
  function loadHighFive(result){
    var rank = result[0].array_to_json[0].rank;
    var port_id = result[0].array_to_json[0].port_id;
+   console.log(rank);
    for(var i=0; i < rank.length; i++)
     document.getElementById("loadHighFive").innerHTML += "rank: "+rank[i]+", port_id: "+port_id[i] + "<br>";
  }
