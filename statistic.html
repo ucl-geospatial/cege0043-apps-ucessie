@@ -98,6 +98,7 @@ function myTimer() {
 // load draw map
 document.addEventListener('DOMContentLoaded', function() {
   console.log("listener domcontentloaded");
+  getPorts();
   draw();
   document.getElementById("highFive").innerHTML = getHighFive();
 }, false);

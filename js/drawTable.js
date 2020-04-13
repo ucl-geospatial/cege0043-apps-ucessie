@@ -5,15 +5,16 @@ function getHighFive() {
      crossDomain: true,
      success: function(result){
        console.log(result);
-       loadHighFive(result);}});
+       loadHighFive(result);
+          }});
    //end of the AJAX call
  }
 
  // adopt https://gist.github.com/jfreels/6734025
  function loadHighFive(result){
-   data = result[0].array_to_json;
+   data = result[0];
    console.log(data);
-   d3.json(result, function (error,data) {
+   d3.json(data, function (error,data) {
      if (error) {
            console.log("Had an error loading file.");
        }
