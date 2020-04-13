@@ -46,7 +46,7 @@ function draw(){
 function getMyParticipate(){
   $.ajax(
     {
-     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/getHighFive/"+ httpsPortNumberAPI ,
+     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/getMyParticipate/"+ httpsPortNumberAPI ,
      crossDomain: true,
      success: function(result){
        console.log(result);
@@ -57,7 +57,7 @@ function getMyParticipate(){
 
  // adopt https://gist.github.com/jfreels/6734025
  function loadMyPart(result){
-    rank_arr = result[0].array_to_json;
+    data = result[0].array_to_json;
     console.log(typeof rank_arr);
     // set the dimensions and margins of the graph
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -66,9 +66,10 @@ function getMyParticipate(){
     // set the ranges
     var x = d3.scaleBand()
               .range([0, width])
-              .padding(0.1);
+              .padding(1);
     var y = d3.scaleLinear()
               .range([height, 0]);
+
     // append the svg object to the body of the page
     // append a 'group' element to 'svg'
     // moves the 'group' element to the top left margin
@@ -78,26 +79,27 @@ function getMyParticipate(){
             .append("g")
             .attr("transform",
                   "translate(" + margin.left + "," + margin.top + ")");
-
+    console.log(data);
+    console.log(x);
+    console.log(y);
           // format the data
           data.forEach(function(d) {
             d.questions_correct = +d.questions_correct;
             });
-
           // Scale the range of the data in the domains
           x.domain(data.map(function(d) { return d.day; }));
           y.domain([0, d3.max(data, function(d) { return d.questions_correct; })]);
-
+      console.log('set domains')
           // append the rectangles for the bar chart
           svg.selectAll(".bar")
              .data(data)
              .enter().append("rect")
              .attr("class", "bar")
-             .attr("x", function(d) { return x(d.questions_correct); })
+             .attr("x", function(d) { return x(d.day); })
              .attr("width", x.bandwidth())
-             .attr("y", function(d) { return y(d.day); })
+             .attr("y", function(d) { return y(d.questions_correct); })
              .attr("height", function(d) { return height - y(d.questions_correct); });
-
+      console.log('rectangles')
           // add the x Axis
           svg.append("g")
              .attr("transform", "translate(0," + height + ")")
