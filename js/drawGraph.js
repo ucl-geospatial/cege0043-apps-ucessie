@@ -10,7 +10,7 @@ function draw(){
 
   d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson").then(data => {
     data = data.features;
-    console.log(data);
+    console.log(typeof data);
     x.domain(data.map(d => d.properties.place));
     y.domain([0, d3.max(data, d => d.properties.mag)]);
 

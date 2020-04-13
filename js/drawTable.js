@@ -12,31 +12,28 @@ function getHighFive() {
 
  // adopt https://gist.github.com/jfreels/6734025
  function loadHighFive(result){
-   rank_arr = result[0];
-   console.log(data);
-   d3.json(rank_arr, function (error,data) {
-     if (error) {
-           console.log("Had an error loading file.");
-       }
+   rank_arr = result[0].array_to_json;
+   console.log(typeof rank_arr);
 
      function tabulate(data, columns) {
-   		var table = d3.select(''#highFive').append('table');
+   		var table = d3.select('#highFive').append('table');
    		var thead = table.append('thead');
    		var	tbody = table.append('tbody');
-      console.log("table created!");
+      console.log(data);
    		// append the header row
    		thead.append('tr')
    		  .selectAll('th')
-   		  .data(columns).enter()
+   		  .data(columns)
+        .enter()
    		  .append('th')
-   		    .text(function (column) { return column; });
-
+   		  .text(function (column) { return column; });
+      console.log(thead);
    		// create a row for each object in the data
    		var rows = tbody.selectAll('tr')
    		  .data(data)
    		  .enter()
    		  .append('tr');
-
+      console.log(rows);
    		// create a cell in each row for each column
    		var cells = rows.selectAll('td')
    		  .data(function (row) {
@@ -52,7 +49,6 @@ function getHighFive() {
    	}
 
    	// render the table(s)
-   	tabulate(data, ['rank', 'port_id']); // 2 column table
+   	tabulate(rank_arr, ['rank', 'port_id']); // 2 column table
 
-   });
  }
