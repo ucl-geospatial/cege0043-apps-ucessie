@@ -12,18 +12,18 @@ function getHighFive() {
 
  // adopt https://gist.github.com/jfreels/6734025
  function loadHighFive(result){
-   data = result[0];
+   rank_arr = result[0];
    console.log(data);
-   d3.json(data, function (error,data) {
+   d3.json(rank_arr, function (error,data) {
      if (error) {
            console.log("Had an error loading file.");
        }
 
      function tabulate(data, columns) {
-   		var table = d3.select('body').append('table')
-   		var thead = table.append('thead')
+   		var table = d3.select(''#highFive').append('table');
+   		var thead = table.append('thead');
    		var	tbody = table.append('tbody');
-
+      console.log("table created!");
    		// append the header row
    		thead.append('tr')
    		  .selectAll('th')
@@ -52,7 +52,7 @@ function getHighFive() {
    	}
 
    	// render the table(s)
-   	tabulate(data, ['date', 'close']); // 2 column table
+   	tabulate(data, ['rank', 'port_id']); // 2 column table
 
    });
  }
