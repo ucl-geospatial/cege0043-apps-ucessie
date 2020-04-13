@@ -140,15 +140,16 @@
           </a>
           <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-             <a class="collapse-item" href="#" onclick="alert('menu 9');">Location</a>
+             <a class="collapse-item" href="#" onclick="window.open('statistic.html')">App Statistic</a>
 
-             <a class="collapse-item" href="#" onclick="alert('going to help page')">Help documentation</a>
+             <a class="collapse-item" href="#" onclick= "window.open('help.html')">Help documentation</a>
            </div>
            </div>
            <button id="getUserLocation" onclick='trackLocation()'>Get Location!</button>
            <div id="showLocation">Your position is here!</div>
          </li>
-         <p id="current_time"></p>
+         <p id="current_time"></p><br>
+         <p id="user_port"></p>
 
 
 
@@ -186,6 +187,7 @@
   function loadMap() {
   loadLeafletMap(); // basemap
   getPorts();
+  document.getElementById("user_port").innerHTML = "You are user: "+httpsPortNumberAPI;
 }
 
 // display current time
