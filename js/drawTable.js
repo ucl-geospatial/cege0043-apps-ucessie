@@ -12,8 +12,11 @@ function getHighFive() {
  // adopt https://gist.github.com/jfreels/6734025
  function loadHighFive(result){
    data = result[0].array_to_json;
-
+   console.log(data);
    d3.json(result, function (error,data) {
+     if (error) {
+           console.log("Had an error loading file.");
+       }
 
      function tabulate(data, columns) {
    		var table = d3.select('body').append('table')
