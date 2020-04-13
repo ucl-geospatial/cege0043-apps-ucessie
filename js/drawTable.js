@@ -52,7 +52,3 @@ function getHighFive() {
 
    });
  }
-
- td, th {
-   padding: 1px 4px;
- }
