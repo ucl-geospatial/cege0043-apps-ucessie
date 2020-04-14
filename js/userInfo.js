@@ -65,6 +65,7 @@ function getHighFive() {
         loadCorrectAnswer(result); }});
     //end of the AJAX call
   }
+  
   function loadCorrectAnswer(result){
     var ans = result[0].array_to_json[0].num_questions;
     document.getElementById("youAnswer").innerHTML = "You have " + ans +"questions answered correctly!";

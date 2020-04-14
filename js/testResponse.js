@@ -5,16 +5,6 @@ var user_lat;
 var user_lon;
 var nearestLayer;
 
-function getFormData() {
-  $.ajax(
-    {
-     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/quizquestions/"+ httpsPortNumberAPI ,
-     crossDomain: true,
-     success: function(result){
-       console.log(result);
-       loadFormData(result); }});
-   //end of the AJAX call
- }
 // advanced function
 // create ajax request/ post - insert data to api
 function calculateNearest() {
@@ -54,59 +44,3 @@ function drawNearest(data){
     }).addTo(mymap);
     mymap.fitBounds(nearestLayer.getBounds());
 }
-// advanced function (Correct answer)
-function getCorrectAnswer() {
-  $.ajax(
-    {
-     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/getCorrectAnswer/"+ httpsPortNumberAPI ,
-     crossDomain: true,
-     success: function(result){
-       console.log(result);
-       loadCorrectAnswer(result); }});
-   //end of the AJAX call
- }
- function loadCorrectAnswer(result){
-   var ans = result[0].array_to_json[0].num_questions;
-   document.getElementById("loadCorrectAnswer").innerHTML = "You have " + ans +"questions answered correctly!";
- }
-
-
-// advanced function (Show Ranking)
-function getQuizRanking() {
-  $.ajax(
-    {
-     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/getRanking/"+ httpsPortNumberAPI ,
-     crossDomain: true,
-     success: function(result){
-       console.log(result);
-       loadRanking(result);}});
-   //end of the AJAX call
- }
- function loadRanking(result){
-   var ans = result[0].array_to_json[0].rank;
-   console.log(ans);
-   document.getElementById("loadRank").innerHTML = "You are currently ranked: " + ans ;
- }
-
-// advanced function (Top Five participates)
-function getHighFive() {
-  $.ajax(
-    {
-     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/getHighFive/"+ httpsPortNumberAPI ,
-     crossDomain: true,
-     success: function(result){
-       console.log(result);
-       loadHighFive(result);}});
-   //end of the AJAX call
- }
- function loadHighFive(result){
-   var rank = result[0].array_to_json[0].rank;
-   var port_id = result[0].array_to_json[0].port_id;
-   console.log(rank);
-   for(var i=0; i < rank.length; i++)
-    document.getElementById("loadHighFive").innerHTML += "rank: "+rank[i]+", port_id: "+port_id[i] + "<br>";
- }
-// advanced function 1
-// advanced function 1
-// advanced function 1
-// advanced function 1
