@@ -25,7 +25,7 @@ function showPosition(position) {
   user_lat = position.coords.latitude;
   user_lon = position.coords.longitude;
   //var marker = L.marker([user_lat,user_lon]).addTo(mymap).bindPopup("<b>You are here!</b>").openPopup();
-  mymap.setView([user_lat, user_lon], 15);
+  mymap.setView([user_lat, user_lon], 20);
   document.getElementById('showLocation').innerHTML = "Latitude: " + user_lat + "<br>Longitude: " + user_lon;
 
 }

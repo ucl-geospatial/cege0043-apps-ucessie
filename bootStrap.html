@@ -77,12 +77,12 @@
         <li class="nav-item d-lg-none" >
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-fw fa-cog"></i>
-            <span id="quizSpan" >Start Quiz</span>
+            <span>Quiz App</span>
 
           </a>
           <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="#" onclick="loadFormData()";>Start Answer Question!</a>
+              <a class="collapse-item" href="#" id="startQuiz" onclick="loadFormData()">Start Answer Question!</a>
               <a class="collapse-item" href="#" id="fiveNearest" onclick="trackLocation()">Find Five nearest question!</a>
             </div>
           </div>
@@ -133,7 +133,8 @@
 
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <!-- This one for Question Setting -->
+        <li class="nav-item d-none d-lg-block">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
             <i class="fas fa-fw fa-cog"></i>
             <span>Resource</span>
@@ -141,13 +142,29 @@
           <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
              <a class="collapse-item" href="#" onclick="window.open('statistic.html')">App Statistic</a>
-             <a href="statistic.html">App Statistic</a>
+             <a class="collapse-item" href="statistic.html">App Statistic2</a>
              <a class="collapse-item" href="#" onclick= "window.open('help.html')">Help documentation</a>
            </div>
            </div>
            <button id="getUserLocation" onclick='trackLocation()'>Get Location!</button>
            <div id="showLocation">Your position is here!</div>
          </li>
+         <!-- This one is user App -->
+         <li class="nav-item d-lg-none">
+           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+             <i class="fas fa-fw fa-cog"></i>
+             <span>Resource</span>
+           </a>
+           <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
+             <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="#" onclick="window.open('statistic_user.html')">App Statistic</a>
+              <a class="collapse-item" href="statistic_user.html">App Statistic2</a>
+              <a class="collapse-item" href="#" onclick= "window.open('help_user.html')">Help documentation</a>
+            </div>
+            </div>
+            <button id="getUserLocation" onclick='trackLocation()'>Get Location!</button>
+            <div id="showLocation">Your position is here!</div>
+          </li>
          <p id="current_time"></p><br>
          <p id="user_port"></p>
 
@@ -187,6 +204,7 @@
   function loadMap() {
   loadLeafletMap(); // basemap
   getPorts();
+  loadFormData();
   document.getElementById("user_port").innerHTML = "You are user: "+httpsPortNumberAPI;
 }
 
@@ -222,7 +240,7 @@ document.getElementById("fiveNearest").addEventListener("click", function() {
 });
 
 // load quiz when open mobile appear
-document.getElementById("quizSpan").addEventListener("click", function() {
+document.getElementById("StartQuiz").addEventListener("click", function() {
   loadFormData();
 });
 
