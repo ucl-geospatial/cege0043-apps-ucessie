@@ -35,13 +35,9 @@
     font-family: Arial;
     }
 
-    tr{
-        background-color: #A9A9A9;
-
-    }
-    td{
-        background-color: #E0FFFF;
-
+    td, th {
+        padding: 1px 4px;
+        border: 1px black solid;
     }
     table{
         color: #000000;
@@ -85,13 +81,13 @@
           <h3>4. Display All Participate Table: </h3><br><br>
           <svg id="svg3" width="600" height="400">
           </svg>
-        </div>
+        </div><br><br>
         <!-- Display question table -->
-
+        <div class="row justify-content-center">
           <h3>5. Display Question Summary Table: </h3><br><br>
           <div id="questionTable" style="width: 600px; height: 400px;">
           </div>
-
+        </div>
 
       </div>
       <!-- End of Main Content -->
@@ -135,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
   getHighFive();
   getMyParticipate();
   getAllParticipate();
+  getQuestionTable();
 }, false);
 </script>
 
