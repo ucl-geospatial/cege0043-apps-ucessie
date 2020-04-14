@@ -1,0 +1,138 @@
+
+<DOCTYPE html>
+  <html lang="en">
+  <head>
+    <!-- Use correct character set. -->
+    <meta charset="utf-8">
+    <!-- boostrap -->
+    <!-- Tell IE to use the latest, best version. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- custom fonts and styles for the bootstrap template -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  crossorigin="anonymous">
+    <link href="css/sb-admin-2.css" type="text/css" rel="stylesheet">
+
+    <!-- make sure you import the D3 script file -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- set the style for the bar graph -->
+    <style>
+      .bar { fill: steelblue; }
+
+    .bar:hover {
+      fill: slateblue;
+    }
+
+    .axis-x path {
+      display: none;
+    }
+
+    .axis text {
+      font-weight: bold;
+    }
+
+    body{
+    font-family: Arial;
+    }
+
+    td, th {
+        padding: 1px 4px;
+        border: 1px black solid;
+    }
+    table{
+        color: #000000;
+    }
+
+    </style>
+
+    <title>Quiz App Help Page</title>
+    <!-- adapted from: https://blackrockdigital.github.io/startbootstrap-sb-admin-2/ -->
+  </head>
+  <body id="page-top">
+    <!-- Whole page -->
+    <div id="wrapper" class="bg-gradient-secondary">
+      <!-- Main Content -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Content display-->
+          <!-- title content -->
+          <div class="row justify-content-center">
+            <h1>Display Statistic</h1>
+            <h5 id="current_time"></h5><br>
+          </div>
+          <!-- Display test graph -->
+          <div class="row justify-content-center">
+            <h3>1. Display Test Diagram: </h3><br><br>
+            <svg id="svg1" width="600" height="400"></svg>
+          </div>
+          <!-- Display test table -->
+          <div class="row justify-content-center">
+            <h3>2. Display Test Table: </h3><br><br>
+            <div id="highFive" style="width: 600px; height: 400px;">
+            </div>
+          </div>
+          <!-- Display My participate table -->
+          <div class="row justify-content-center">
+            <h3>3. Display My Participate Table: </h3><br><br>
+            <svg id="svg2" width="600" height="400">
+            </svg>
+          </div>
+        <!-- Display All participate table -->
+        <div class="row justify-content-center">
+          <h3>4. Display All Participate Table: </h3><br><br>
+          <svg id="svg3" width="600" height="400">
+          </svg>
+        </div><br><br>
+        <!-- Display question table -->
+        <div class="row justify-content-center">
+          <h3>5. Display Question Summary Table: </h3><br><br>
+          <div id="questionTable" style="width: 600px; height: 400px;">
+          </div>
+        </div>
+
+      </div>
+      <!-- End of Main Content -->
+    </div>
+    <!-- end of wrapper -->
+
+  </body>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/sb-admin-2.js"></script>
+
+<!-- import js script -->
+<script src="js/drawGraph.js"></script>
+<script src="js/drawTable.js"></script>
+<script src="js/utilities.js"></script>
+
+<script>
+// display current time
+// adapt from w3 school
+setInterval(myTimer, 1000);
+
+function myTimer() {
+  var d = new Date();
+  var t = d.toLocaleTimeString();
+  document.getElementById("current_time").innerHTML = t;
+}
+
+</script>
+<!-- Test Graph -->
+<script>
+// load draw map
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("listener domcontentloaded");
+  getPorts();
+  draw();
+  getHighFive();
+  getMyParticipate();
+  getAllParticipate();
+  getQuestionTable();
+}, false);
+</script>
+
+</html>
