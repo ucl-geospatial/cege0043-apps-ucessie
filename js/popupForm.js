@@ -76,7 +76,9 @@ function checkAnswer(questionID) {
     if ((document.getElementById(questionID+"_"+i).checked) && (i == answer)) { alert ("Well done"); correctAnswer = true; } }
     if (correctAnswer === false) {
       // they didn't get it right
-      alert("Better luck next time"); }
+      alert("Better luck next time");
+      break;       
+    }
       // now close the popup
       mymap.closePopup();
       // the code to upload the answer to the server would go here
