@@ -60,25 +60,14 @@ function getMyParticipate(){
     data = result[0].array_to_json;
     console.log(typeof rank_arr);
     // set the dimensions and margins of the graph
-    var margin = {top: 20, right: 20, bottom: 30, left: 40},
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
-    // set the ranges
-    var x = d3.scaleBand()
-              .range([0, width])
-              .padding(1);
-    var y = d3.scaleLinear()
-              .range([height, 0]);
-
-    // append the svg object to the body of the page
-    // append a 'group' element to 'svg'
-    // moves the 'group' element to the top left margin
-    var svg = d3.select("#svg2").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform",
-                  "translate(" + margin.left + "," + margin.top + ")");
+    const svg     = d3.select("#svg2"),
+          margin  = {top: 20, right: 20, bottom: 30, left: 40},
+          width   = +svg.attr("width")  - margin.left - margin.right,
+          height  = +svg.attr("height") - margin.top  - margin.bottom,
+          x       = d3.scaleBand().rangeRound([0, width]).padding(0.2),
+          y       = d3.scaleLinear().rangeRound([height, 0]),
+          g       = svg.append("g")
+                       .attr("transform", `translate(${margin.left},${margin.top})`);
     console.log(data);
     console.log(x);
     console.log(y);
@@ -88,10 +77,10 @@ function getMyParticipate(){
             });
           // Scale the range of the data in the domains
           x.domain(data.map(function(d) { return d.day; }));
-          y.domain([0, d3.max(data, function(d) { return d.questions_correct; })]);
+          y.domain([0, d3.max(data, function(d) { return d.questions_answered; })]);
       console.log('set domains')
           // append the rectangles for the bar chart
-          svg.selectAll(".bar")
+          g.selectAll(".bar")
              .data(data)
              .enter().append("rect")
              .attr("class", "bar")
@@ -101,12 +90,70 @@ function getMyParticipate(){
              .attr("height", function(d) { return height - y(d.questions_correct); });
       console.log('rectangles')
           // add the x Axis
-          svg.append("g")
+          g.append("g")
              .attr("transform", "translate(0," + height + ")")
              .call(d3.axisBottom(x));
 
           // add the y Axis
-          svg.append("g")
-              .call(d3.axisLeft(y));
+          g.append("g")
+              .call(d3.axisLeft(y));;
+
+}
+
+// load all participates
+
+function getAllParticipate(){
+  $.ajax(
+    {
+     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/getAllParticipate/"+ httpsPortNumberAPI ,
+     crossDomain: true,
+     success: function(result){
+       console.log(result);
+       loadAllPart(result);
+          }});
+   //end of the AJAX call
+ }
+// adopt https://gist.github.com/jfreels/6734025
+function loadAllPart(result){
+   data = result[0].array_to_json;
+   console.log(typeof rank_arr);
+   // set the dimensions and margins of the graph
+   const svg     = d3.select("#svg3"),
+         margin  = {top: 20, right: 20, bottom: 30, left: 40},
+         width   = +svg.attr("width")  - margin.left - margin.right,
+         height  = +svg.attr("height") - margin.top  - margin.bottom,
+         x       = d3.scaleBand().rangeRound([0, width]).padding(0.2),
+         y       = d3.scaleLinear().rangeRound([height, 0]),
+         g       = svg.append("g")
+                      .attr("transform", `translate(${margin.left},${margin.top})`);
+   console.log(data);
+   console.log(x);
+   console.log(y);
+         // format the data
+         data.forEach(function(d) {
+           d.questions_correct = +d.questions_correct;
+           });
+         // Scale the range of the data in the domains
+         x.domain(data.map(function(d) { return d.day; }));
+         y.domain([0, d3.max(data, function(d) { return d.questions_answered; })]);
+     console.log('set domains')
+         // append the rectangles for the bar chart
+         g.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return x(d.day); })
+            .attr("width", x.bandwidth())
+            .attr("y", function(d) { return y(d.questions_correct); })
+            .attr("height", function(d) { return height - y(d.questions_correct); });
+     console.log('rectangles')
+         // add the x Axis
+         g.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+
+         // add the y Axis
+         g.append("g")
+             .call(d3.axisLeft(y));;
 
 }
