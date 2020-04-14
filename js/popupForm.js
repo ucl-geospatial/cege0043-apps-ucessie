@@ -77,7 +77,6 @@ function checkAnswer(questionID) {
     if (correctAnswer === false) {
       // they didn't get it right
       alert("Better luck next time");
-      break;       
     }
       // now close the popup
       mymap.closePopup();
