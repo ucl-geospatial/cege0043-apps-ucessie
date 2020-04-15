@@ -204,4 +204,4 @@ bar graph: [https://bl.ocks.org/d3noob/bdf28027e0ce70bd132edc64f1dd7ea4](https:/
 
 - The D3 table creation is adapted from [https://gist.github.com/jfreels/6734025](https://gist.github.com/jfreels/6734025)
 - The map function is adapted from Leaflet map and OpenStreetMap.
-- The word documentation is used the Markdown Converter https://word2md.com/
+- The word documentation used the Markdown Converter https://word2md.com/ to translate to markdown.
