@@ -46,18 +46,7 @@ function dataUploaded(data) {
 // change the DIV to show the response
 document.getElementById("dataUploadResult").innerHTML = JSON.stringify(data); }
 
-// create ajax request/ post - insert data to quizanswers
-function processAnswer(postString) {
-  var serviceUrl= "https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI+"/inputAnswer"
-  $.ajax({
-    url: serviceUrl,
-    crossDomain: true,
-    type: "POST",
-    success: function(data){console.log(data); dataUploaded(data);}, data: postString }); }
-// create the code to process the response from the data server
-function dataUploaded(data) {
-// change the DIV to show the response
-document.getElementById("dataUploadResult").innerHTML = JSON.stringify(data); }
+
 
 function deleteRecord() {
   var deleteID = document.getElementById("deleteID").value;

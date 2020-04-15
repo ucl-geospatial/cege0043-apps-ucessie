@@ -2,29 +2,11 @@ var mymap;
 var popup = L.popup();
 var formLayer;
 
-function getFormData() {
-  $.ajax(
-    {
-     url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/quizquestions/"+ httpsPortNumberAPI ,
-     crossDomain: true,
-     success: function(result){
-       console.log(result);
-       loadFormData(result); }});
-   //end of the AJAX call
- }
-   // end of getFormData
-
-//function formDataResponse(result){
-  //var formData = result.responseText;
-  //loadFormData(formData);
-//}
-
 // keep the layer global so that we can automatically pop up a
 // pop-up menu on a point if necessary
 // we can also use this to determine distance for the proximity alert
 
 function loadFormData() {
-  var testMarkerRed = L.AwesomeMarkers.icon({ icon: 'play', markerColor: 'red' });
   $.ajax({
      url:"https://developer.cege.ucl.ac.uk:"+ httpsPortNumberAPI + "/getGeoJSON/quizquestions/"+ httpsPortNumberAPI ,
      crossDomain: true,
